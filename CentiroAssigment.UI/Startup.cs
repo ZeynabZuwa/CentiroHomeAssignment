@@ -1,3 +1,4 @@
+using Blazorise;
 using CentiroAssigment.UI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -10,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 
 namespace CentiroAssigment.UI
 {
@@ -28,7 +31,21 @@ namespace CentiroAssigment.UI
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            //services.AddSingleton<WeatherForecastService>();
+            var apiUrl = new Uri("https://localhost:44369/");
+            services.AddHttpClient<IOrderDataService, OrderDataService>(client =>
+            {
+                client.BaseAddress = apiUrl;
+            });
+
+        
+
+            services.AddBlazorise(options =>
+            {
+                options.ChangeTextOnKeyPress = true;
+            })
+                .AddBootstrapProviders()
+                .AddFontAwesomeIcons();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
