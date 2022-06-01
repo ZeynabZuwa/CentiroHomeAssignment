@@ -1,22 +1,22 @@
-﻿using System;
+﻿using CentiroAssignment.Services.Features;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CentiroHomeAssignment.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class OrdersController : Controller
     {
-        public IActionResult GetAll()
+        private readonly IOrderService _orderService;
+
+        public OrdersController(IOrderService orderService)
         {
-            // TODO: Return all orders to a view
-
-            throw new NotImplementedException();
-        }
-
-        public IActionResult GetByOrderNumber(string orderNumber)
-        {
-            // TODO: Return the specific order to a view
-
-            throw new NotImplementedException();
+            _orderService = orderService;
         }
     }
 }
