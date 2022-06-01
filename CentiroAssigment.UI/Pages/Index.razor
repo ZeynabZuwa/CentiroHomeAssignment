@@ -1,7 +1,40 @@
 ﻿@page "/"
+@using CentiroAssigment.UI.Data
+@using CentiroAssignment.Shared.ResponseModels
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+Click on the buttons to import the CSV files! <br />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div>
+    <Button Type="ButtonType.Submit" Color="Color.Primary"  Size="Size.Medium"@onclick="() => ImportOrders(Order1)">Import Order 1</Button>
+    <Button Type="ButtonType.Submit" Color="Color.Info"  Size="Size.Medium" @onclick="() => ImportOrders(Order2)">Import Order 2</Button>
+    <Button Type="ButtonType.Submit" Color="Color.Success"  Size="Size.Medium" @onclick="() => ImportOrders(Order3)">Import Order 3</Button>
+
+
+    
+    
+</div>
+
+
+@code{
+
+    [Inject]
+    public IOrderDataService OrderDataService { get; set; }
+
+    public List<OrderResponse> OrderResponses { get; set; }
+
+    public OrderResponse OrderResponse { get; set; }
+
+    private string Order1 { get; set; } = "App_Data/Order1.txt";
+
+    private string Order2 { get; set; } = "App_Data/Order2.txt";
+
+    private string Order3 { get; set; } = "App_Data/Order3.txt";
+
+    public async Task ImportOrders(string filePath)
+    {
+        await OrderDataService.ImportOrders(filePath);
+    }
+}
