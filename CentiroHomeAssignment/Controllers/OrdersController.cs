@@ -37,7 +37,7 @@ namespace CentiroHomeAssignment.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> ImportCSVfiles([FromBody] string filePath)
+        public async Task<ActionResult> ImportCSVfiles(string filePath)
         {
             
             await _orderService.ImportCSVfiles(filePath);

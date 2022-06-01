@@ -14,4 +14,16 @@
     <ProjectReference Include="..\CentiroAssignment.Shared\CentiroAssignment.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="App_Data\Order1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\Order2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\Order3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

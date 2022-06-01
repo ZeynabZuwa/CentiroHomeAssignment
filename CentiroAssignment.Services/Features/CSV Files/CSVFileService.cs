@@ -34,8 +34,6 @@ namespace CentiroAssignment.Services.Features.CSV_Files
 
             }
 
-            var test = dataTable;
-
             return dataTable;
         }
 
