@@ -1,4 +1,5 @@
 ﻿using CentiroAssignment.Services.Features;
+using CentiroAssignment.Shared.ResponseModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,22 @@ namespace CentiroHomeAssignment.Controllers
         public OrdersController(IOrderService orderService)
         {
             _orderService = orderService;
+        }
+
+
+        [HttpGet]
+        public async Task<ActionResult<List<OrderResponse>>> GetAllOrders()
+        {
+            // TODO: Return all products
+            var orderResponses = await _orderService.GetAllOrders();
+            if (orderResponses != null && orderResponses.Count > 0)
+            {
+                return Ok(orderResponses);
+            }
+            else
+            {
+                return BadRequest(orderResponses);
+            }
         }
     }
 }
