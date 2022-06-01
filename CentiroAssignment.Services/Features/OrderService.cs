@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CentiroAssignment.Data.Repositories.OrderRepository;
+using CentiroAssignment.Services.Features.CSV_Files;
 using CentiroAssignment.Shared.Models;
 using CentiroAssignment.Shared.RequestModels;
 using CentiroAssignment.Shared.ResponseModels;
@@ -14,11 +15,13 @@ namespace CentiroAssignment.Services.Features
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
+        private readonly ICSVFileService _cSVFileService;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper, ICSVFileService cSVFileService)
         {
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _cSVFileService = cSVFileService ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public async Task<OrderResponse> GetOrderByOrderNo(int orderNo)
@@ -95,6 +98,15 @@ namespace CentiroAssignment.Services.Features
             await _orderRepository.DeleteAsync(order);
             var orderResponse = _mapper.Map<OrderResponse>(order);
             return orderResponse;
+        }
+
+        public async Task ImportCSVfiles(string filePath)
+        {
+            var readFile = _cSVFileService.CSVConvertToDataTable(filePath);
+
+            var order = await _cSVFileService.MakeDataTableToOrderRequestList(readFile);
+
+            await _orderRepository.AddRangeAsync(order);
         }
 
     }

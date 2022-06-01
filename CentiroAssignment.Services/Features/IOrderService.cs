@@ -15,5 +15,6 @@ namespace CentiroAssignment.Services.Features
         Task<OrderResponse> CreateOrder(OrderRequest orderRequest);
         Task<OrderResponse> UpdateOrder(OrderRequest orderRequest);
         Task<OrderResponse> DeleteOrderById(Guid orderId);
+        Task ImportCSVfiles(string filePath);
     }
 }

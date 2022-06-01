@@ -1,6 +1,7 @@
 ﻿using CentiroAssignment.Data;
 using CentiroAssignment.Data.Repositories.OrderRepository;
 using CentiroAssignment.Services.Features;
+using CentiroAssignment.Services.Features.CSV_Files;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,6 +19,9 @@ namespace CentiroAssignment.Services
             services.AddScoped<IOrderRepository, OrderRepository>();
             
             services.AddScoped<IOrderService, OrderService>();
+
+            // CSV File Servive
+            services.AddScoped<ICSVFileService, CSVFileService>();
 
             //Mapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());

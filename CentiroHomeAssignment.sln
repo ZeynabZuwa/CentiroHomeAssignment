@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30621.155
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentiroHomeAssignment", "CentiroHomeAssignment\CentiroHomeAssignment.csproj", "{55E29100-49EF-4E10-8761-1CCD7F7DFC3A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentiroHomeAssignment.Tests", "CentiroHomeAssignment.Tests\CentiroHomeAssignment.Tests.csproj", "{D6355995-C00B-4001-ADB7-776ABD21D7DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentiroAssigment.UI", "CentiroAssigment.UI\CentiroAssigment.UI.csproj", "{C9B0B7CA-60A8-419B-AC90-9349B260DDBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentiroAssigment.UI", "CentiroAssigment.UI\CentiroAssigment.UI.csproj", "{C9B0B7CA-60A8-419B-AC90-9349B260DDBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentiroAssignment.Shared", "CentiroAssignment.Shared\CentiroAssignment.Shared.csproj", "{F62C16FB-2B69-4085-A1CA-8E7E3F4D58CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentiroAssignment.Shared", "CentiroAssignment.Shared\CentiroAssignment.Shared.csproj", "{F62C16FB-2B69-4085-A1CA-8E7E3F4D58CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentiroAssignment.Services", "CentiroAssignment.Services\CentiroAssignment.Services.csproj", "{F0575184-5388-43F2-8267-D19135C3838B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentiroAssignment.Services", "CentiroAssignment.Services\CentiroAssignment.Services.csproj", "{F0575184-5388-43F2-8267-D19135C3838B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentiroAssignment.Data", "CentiroAssignment.Data\CentiroAssignment.Data.csproj", "{FCB33911-4D19-4E0A-939A-B7398565AFA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentiroAssignment.Data", "CentiroAssignment.Data\CentiroAssignment.Data.csproj", "{FCB33911-4D19-4E0A-939A-B7398565AFA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
