@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CentiroAssignment.Services.Features.CSV_Files
 {
@@ -39,21 +40,24 @@ namespace CentiroAssignment.Services.Features.CSV_Files
 
         public async Task<List<Order>> MakeDataTableToOrderRequestList(DataTable dataTable)
         {
-            var listOfOrders = dataTable.AsEnumerable().Select(row => new Order
+            var listOfOrders  = await Task.Run(() =>
+                   {
+                return dataTable.AsEnumerable().Select(row => new Order
             {
-                    OrderNumber = Convert.ToInt32(row["OrderNumber"]),
-                    OrderLineNumber = Convert.ToInt32(row["OrderLineNumber"]),
-                    ProductNumber = (row["ProductNumber"]).ToString(),
-                    Quantity = Convert.ToInt32(row["Quantity"]),
-                    Name = (row["Name"]).ToString(),
-                    Description = (row["Description"]).ToString(),
-                    Price = Convert.ToDouble(row["Price"]),
-                    ProductGroup = (row["ProductGroup"]).ToString(),
-                    OrderDate = Convert.ToDateTime(row["OrderDate"]),
-                    CustomerName = (row["CustomerName"]).ToString(),
-                    CustomerNumber = Convert.ToInt32(row["CustomerNumber"]),
+                OrderNumber = Convert.ToInt32(row["OrderNumber"]),
+                OrderLineNumber = Convert.ToInt32(row["OrderLineNumber"]),
+                ProductNumber = (row["ProductNumber"]).ToString(),
+                Quantity = Convert.ToInt32(row["Quantity"]),
+                Name = (row["Name"]).ToString(),
+                Description = (row["Description"]).ToString(),
+                Price = XmlConvert.ToDouble(row["Price"].ToString()),
+                ProductGroup = (row["ProductGroup"]).ToString(),
+                OrderDate = Convert.ToDateTime(row["OrderDate"]),
+                CustomerName = (row["CustomerName"]).ToString(),
+                CustomerNumber = Convert.ToInt32(row["CustomerNumber"]),
 
             }).ToList();
+           });
 
             return listOfOrders;
         }
@@ -61,51 +65,3 @@ namespace CentiroAssignment.Services.Features.CSV_Files
 }
 
 
-//OrderNumber = Convert.ToInt32(row["OrderNumber"]),
-//OrderLineNumber = Convert.ToInt32(row["OrderLineNumber"]),
-//ProductNumber = (row["ProductNumber"]).ToString(),
-//Quantity = Convert.ToInt32(row["Quantity"]),
-//Name = (row["Name"]).ToString(),
-//Description = (row["Description"]).ToString(),
-//Price = Convert.ToDouble(row["Price"]),
-//ProductGroup = (row["ProductGroup"]).ToString(),
-//OrderDate = Convert.ToDateTime(row["OrderDate"]),
-//CustomerName = (row["CustomerName"]).ToString(),
-//CustomerNumber = Convert.ToInt32(row["CustomerNumber"]),
-
-
-//public async Task<List<Order>> MakeDataTableToOrderRequestList(DataTable dataTable)
-//{
-//    var listOfOrders = await Task.Run(() =>
-//    {
-//        return dataTable.AsEnumerable().Select(row => new Order
-//        {
-//            OrderNumber = row.Field<int>("OrderNumber"),
-//            OrderLineNumber = row.Field<int>("OrderLineNumber"),
-//            ProductNumber = row.Field<string>("ProductNumber"),
-//            Quantity = row.Field<int>("Quantity"),
-//            Name = row.Field<string>("Name"),
-//            Description = row.Field<string>("Description"),
-//            Price = row.Field<double>("Price"),
-//            ProductGroup = row.Field<string>("ProductGroup"),
-//            OrderDate = row.Field<DateTime>("OrderDate"),
-//            CustomerName = row.Field<string>("CustomerName"),
-//            CustomerNumber = row.Field<int>("CustomerNumber"),
-
-//        }).ToList();
-//    });
-
-//    return listOfOrders;
-//}
-
-                    //OrderNumber = row.Field<int>("OrderNumber"),
-                    //OrderLineNumber = row.Field<int>("OrderLineNumber"),
-                    //ProductNumber = row.Field<string>("ProductNumber"),
-                    //Quantity = row.Field<int>("Quantity"),
-                    //Name = row.Field<string>("Name"),
-                    //Description = row.Field<string>("Description"),
-                    //Price = row.Field<double>("Price"),
-                    //ProductGroup = row.Field<string>("ProductGroup"),
-                    //OrderDate = row.Field<DateTime>("OrderDate"),
-                    //CustomerName = row.Field<string>("CustomerName"),
-                    //CustomerNumber = row.Field<int>("CustomerNumber"),
